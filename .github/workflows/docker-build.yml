@@ -21,7 +21,6 @@ jobs:
           pwd 
           ls
           ls source
-          echo ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏗️ Сборка Docker-образа
         run: |
@@ -40,4 +39,4 @@ jobs:
             mssql-duplica-script.zip
             ./files-for-image/README.md
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
