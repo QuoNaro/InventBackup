@@ -23,13 +23,8 @@ jobs:
           ls source
 
       - name: 🏗️ Сборка Docker-образа
-        id: build
-        uses: docker/build-push-action@v2
-        with:
-          context: source/
-          file: Dockerfile
-          push: false  # Не отправляем в Docker Hub
-          tags: ms-duplica-script:${{ github.ref_name }}
+        run: |
+          docker build -t mssql-duplica-script:latest .
 
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
