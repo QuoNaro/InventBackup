@@ -24,12 +24,12 @@ jobs:
 
       - name: 🏗️ Сборка Docker-образа
         run: |
-          docker build -t mssql-duplica-script:${{ github.ref_name }}  -f ./source/Dockerfile ./source
+          docker build -t mssql-duplica-script:latest  -f ./source/Dockerfile ./source
 
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
-          docker save ms-duplica-script:${{ github.ref_name }} -o ms-duplica-script.tar
-          zip mssql-duplica-script.zip ms-duplica-script.tar
+          docker save mssql-duplica-script:latest -o mssql-duplica-script.tar
+          zip -r mssql-duplica-script.zip  ./files-for-image/* ./mssql-duplica-script.tar
 
       - name: 🚀 Создание релиза
         uses: softprops/action-gh-release@v2.0.8
@@ -37,8 +37,6 @@ jobs:
           tag_name: ${{ github.ref_name }}
           files: |
             mssql-duplica-script.zip  # Загружаем архивированный файл
-            .image-files/README.md # Загружаем инструкцию для релиза
-            .env.example
-            .image-files/load.sh
+            ./files-for-image/README.md # Загружаем инструкцию для релиза
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
