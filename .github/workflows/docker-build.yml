@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: 📥 Получение кода
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: ⚙️ Настройка Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -22,20 +22,17 @@ jobs:
         with:
           context: .
           push: false  # Не отправляем в Docker Hub
-          tags: ms-duplica-script:${{ github.ref }}
+          tags: ms-duplica-script:${{ github.ref_name }}
 
-      - name: 📦 Сохранение Docker-образа в файл
+      - name: 📦 Сохранение и архивирование Docker-образа
         run: |
-          docker save ms-duplica-script:${{ github.ref }} -o ms-duplica-script.tar
-
-      - name: 📦 Архивирование Docker-образа
-        run: |
+          docker save ms-duplica-script:${{ github.ref_name }} -o ms-duplica-script.tar
           zip mssql-duplica-script.zip ms-duplica-script.tar
 
       - name: 🚀 Создание релиза
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v1.0.0
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
           files: |
             mssql-duplica-script.zip  # Загружаем архивированный файл
             .image-files/README.md # Загружаем инструкцию для релиза
