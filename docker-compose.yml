@@ -6,7 +6,7 @@ services:
     build:
       context: ./source/
       dockerfile: Dockerfile
-    image: mssql-duplica-script:latest
+    image: mssql-duplica-script
     volumes: 
       - ./backup:/app/BACKUP
     env_file:

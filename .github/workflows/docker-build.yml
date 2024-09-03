@@ -24,7 +24,7 @@ jobs:
 
       - name: 🏗️ Сборка Docker-образа
         run: |
-          docker build -t mssql-duplica-script:latest  -f ./source/Dockerfile ./source
+          docker build -t mssql-duplica-script:${{ github.ref_name }}  -f ./source/Dockerfile ./source
 
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
@@ -39,5 +39,6 @@ jobs:
             mssql-duplica-script.zip  # Загружаем архивированный файл
             .image-files/README.md # Загружаем инструкцию для релиза
             .env.example
+            .image-files/load.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
