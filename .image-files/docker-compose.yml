@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  backup:
+    container_name: MSSQL-DUPLICA-SCRIPT
+    build:
+      context: ./source/
+      dockerfile: Dockerfile
+    image: mssql-duplica-script:latest
+    volumes: 
+      - ./backup:/app/BACKUP
+    env_file:
+      .env
+    restart: 'on-failure'
+    network_mode: host
+
+    
