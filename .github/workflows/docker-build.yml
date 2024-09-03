@@ -20,12 +20,13 @@ jobs:
         run: | 
           pwd 
           ls
+          ls source
 
       - name: 🏗️ Сборка Docker-образа
         id: build
         uses: docker/build-push-action@v2
         with:
-          context: ./source/
+          context: source/
           file: Dockerfile
           push: false  # Не отправляем в Docker Hub
           tags: ms-duplica-script:${{ github.ref_name }}
