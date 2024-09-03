@@ -30,7 +30,7 @@ jobs:
           zip mssql-duplica-script.zip ms-duplica-script.tar
 
       - name: 🚀 Создание релиза
-        uses: softprops/action-gh-release@v1.0.0
+        uses: softprops/action-gh-release@v2.0.8
         with:
           tag_name: ${{ github.ref_name }}
           files: |
