@@ -16,6 +16,11 @@ jobs:
       - name: ⚙️ Настройка Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: test
+        run: | 
+          pwd 
+          ls
+
       - name: 🏗️ Сборка Docker-образа
         id: build
         uses: docker/build-push-action@v2
