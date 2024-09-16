@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker load -i ./mssql-duplica-script.tar
+docker load -i ./mds*.tar
