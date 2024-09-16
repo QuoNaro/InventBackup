@@ -4,7 +4,7 @@ FROM fabiang/sqlcmd:latest
 WORKDIR /app
 
 # Установка дополнительных пакетов и создание необходимых директорий
-RUN apt-get update -qq && \ sad
+RUN apt-get update -qq && \
     apt-get install -qq -y sshpass xz-utils cron nano && \
     mkdir -p ./backup/ ./logs && \
     rm -rf /var/lib/apt/lists/*
