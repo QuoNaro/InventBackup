@@ -18,13 +18,13 @@ jobs:
 
       - name: 🏗️ Сборка Docker-образа
         run: |
-          docker build -t mssql-duplica-script:latest  -f ./source/Dockerfile ./source
+          docker build -t mssql-duplica-script:${{ github.ref_name }}  -f ./source/Dockerfile ./source
 
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
-          docker save mssql-duplica-script:latest -o mssql-duplica-script.tar
+          docker save mssql-duplica-script:${{ github.ref_name }} -o mds_${{ github.ref_name }}.tar
           ls ./release 
-          zip -r mssql-duplica-script.zip  release  ./mssql-duplica-script.tar
+          zip -r mds_${{ github.ref_name }}.zip  release  ./mds_${{ github.ref_name }}.tar
 
       - name: 📝 Подготовка описания релиза
         run: |
@@ -42,6 +42,6 @@ jobs:
           tag_name: ${{ github.ref_name }}
           body: ${{ env.RELEASE_BODY }}
           files: |
-            mssql-duplica-script.zip
+            mds_${{ github.ref_name }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
