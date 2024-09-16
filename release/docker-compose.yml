@@ -9,6 +9,5 @@ services:
     env_file:
       .env
     restart: 'on-failure'
-    network_mode: host
 
     

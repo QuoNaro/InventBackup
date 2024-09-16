@@ -23,14 +23,14 @@ jobs:
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
           docker save mssql-duplica-script:latest -o mssql-duplica-script.tar
-          ls ./files-for-image/
-          zip -r mssql-duplica-script.zip  files-for-image/ ./mssql-duplica-script.tar
+          ls ./release 
+          zip -r mssql-duplica-script.zip  release  ./mssql-duplica-script.tar
 
       - name: 📝 Подготовка описания релиза
         run: |
-          if [ -f ./files-for-image/RELEASE_NOTES.md ]; then
+          if [ -f ./release RELEASE_NOTES.md ]; then
             echo "RELEASE_BODY<<EOF" >> $GITHUB_ENV
-            cat ./files-for-image/RELEASE_NOTES.md >> $GITHUB_ENV
+            cat ./release RELEASE_NOTES.md >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
           else
             echo "RELEASE_BODY=Автоматический релиз версии ${{ github.ref_name }}" >> $GITHUB_ENV

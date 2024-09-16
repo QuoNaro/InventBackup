@@ -6,7 +6,7 @@ WORKDIR /app
 # Установка дополнительных пакетов и создание необходимых директорий
 RUN apt-get update -qq && \
     apt-get install -qq -y sshpass xz-utils cron nano && \
-    mkdir -p ./backup/ ./output/logs && \
+    mkdir -p ./backup/ ./logs && \
     rm -rf /var/lib/apt/lists/*
 
 # Копируем скриптовые файлы и устанавливаем права
