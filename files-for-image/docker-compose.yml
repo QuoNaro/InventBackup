@@ -5,7 +5,7 @@ services:
     container_name: MSSQL-DUPLICA-SCRIPT
     image: mssql-duplica-script:latest
     volumes: 
-      - ./backup:/app/BACKUP
+      - ./backup:/app/backup
     env_file:
       .env
     restart: 'on-failure'
