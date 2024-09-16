@@ -23,6 +23,7 @@ jobs:
       - name: 📦 Сохранение и архивирование Docker-образа
         run: |
           docker save mssql-duplica-script:latest -o mssql-duplica-script.tar
+          ls ./files-for-image/
           zip -r mssql-duplica-script.zip  ./files-for-image/* ./mssql-duplica-script.tar
 
       - name: 📝 Подготовка описания релиза
