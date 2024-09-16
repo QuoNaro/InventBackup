@@ -8,10 +8,9 @@ services:
       dockerfile: Dockerfile
     image: mssql-duplica-script:latest
     volumes: 
-      - ./backup:/app/BACKUP
+      - ./backup:/app/backup/
+      - ./logs:/app/logs/
     env_file:
       .env
     restart: 'on-failure'
-    network_mode: host
-
     
