@@ -3,7 +3,7 @@ version: '3'
 services:
   backup:
     container_name: MSSQL-DUPLICA-SCRIPT
-    image: mssql-duplica-script:latest
+    image: mssql-duplica-script:#YOUR-VERSION
     volumes: 
       - ./backup:/app/backup
     env_file:
