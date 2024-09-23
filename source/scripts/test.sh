@@ -1,0 +1,1 @@
+echo "Hello World! ($(date +"%d-%m-%Y | %H:%M:%S"))"
