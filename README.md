@@ -15,29 +15,24 @@
 
 3. **Откройте файл `.env`** и заполните переменные окружения соответствующими значениями:
    ```env
-    # Путь для резервного копирования внутри Windows Server
-    WINPATH=C:\backup\
+    # MAIN
+    HOST=172.16.62.151
 
-    # Пароль для SSH-доступа к Windows-серверу
-    WINSSH_PASSWORD=your_password_here
+    # SSH
 
-    # Имя пользователя для SSH-доступа к Windows-серверу
-    WINSSH_USER=your_username_here
+    WINSSH_PASSWORD=CtrDotKem#1
+    WINSSH_USER=admin
 
-    # IP-адрес сервера базы данных
-    SERVER=127.0.0.1
+    # DATABASE
+    DB=db
+    DB_USER=db_user
+    DB_PASSWORD=sa
+    PREFIX=backup
 
-    # Имя базы данных для MS SQL Server
-    DB=test_db
+    # PATH
+    REMOTEPATH=C:\windows\path\to\backup\
+    LOCALPATH=/path/to/backups/
 
-    # Имя пользователя для подключения к базе данных MS SQL Server
-    DB_USER=your_db_user_here
-
-    # Пароль для подключения к базе данных MS SQL Server
-    DB_PASSWORD=your_db_password_here
-
-    # Префикс названия бэкапа
-    PREFIX=inv
     ```
 
 

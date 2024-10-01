@@ -2,15 +2,15 @@ version: '3'
 
 services:
   backup:
-    container_name: MSSQL-DUPLICA-SCRIPT
+    container_name: mssql-backuper
     build:
-      context: ./source/
+      context: ./build/
       dockerfile: Dockerfile
-    image: mssql-duplica-script:latest
+    image: mds:latest
     volumes: 
       - ./backup:/app/backup/
-      - ./logs:/app/logs/
+      - ./backup.log:/app/backup.log
     env_file:
-      .env
+      - .env
     restart: 'on-failure'
     

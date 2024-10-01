@@ -2,12 +2,12 @@ version: '3'
 
 services:
   backup:
-    container_name: MSSQL-DUPLICA-SCRIPT
-    image: mssql-duplica-script:#YOUR-VERSION
+    container_name: mssql-backuper
+    image: mds:latest
     volumes: 
       - ./backup:/app/backup
     env_file:
-      .env
+      - .env
     restart: 'on-failure'
 
     
